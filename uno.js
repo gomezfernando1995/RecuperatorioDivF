@@ -21,7 +21,11 @@ function mostrar()
  
   let flagMujer = 0;
   let mujerMayorTemperatura; 
-  let NombreMujerMayorTemperatura; 
+  let nombreMujerMayorTemperatura; 
+
+  let mensajeA;
+  let mensajeB;
+  let mensajeC;
 
   for(i=0;i<5;i++){
 			  
@@ -45,36 +49,32 @@ function mostrar()
 					edad = parseInt(prompt("Error, reingrese edad del paciente"));
 				}	
 
-				acumuladorEdad =edad;
+				acumuladorEdad +=edad;
 
 			if(sexo == "m"){
 				contadorSexoM++;
-
-			}else {
-				 contadorSexoF++;
-			}	
-
-			if(sexo == "f"){
+			}else if(sexo == "f"){
 				  if (flagMujer == 0 || temperatura>mujerMayorTemperatura){
-					NombreMujerMayorTemperatura = nombre;
+					nombreMujerMayorTemperatura = nombre;
 					mujerMayorTemperatura = temperatura;
 					flagMujer = 1;
+					contadorSexoF++;
 				  }
 
 			}
-			
+  		}	
 
 		 	promedio = acumuladorEdad/5;
 			  
-		 		console.log("A-Hay "+contadorSexoM+" hombres ingresados y "+contadorSexoF+" mujeres ingresadas");
-			 
+			mensajeA="A-Hay "+contadorSexoM+" hombres ingresados y "+contadorSexoF+" mujeres ingresadas";
+			mensajeB="B-El promedio total de las edades ingresadas es de "+promedio;
 			
-			 console.log("B-El promedio total de las edades ingresadas es de "+promedio);
-			
-			}if (!(sexo=="f")) {
-				console.log ("C- No se ingresaron mujeres");
+			if (flagMujer == 0) {
+				mensajeC ="C- No se ingresaron mujeres";
 			}else{
-				console.log("C-La mujer con mayor temperatura  es "+NombreMujerMayorTemperatura+ " con "+mujerMayorTemperatura);
+				mensajeC = "C-La mujer con mayor temperatura  es "+nombreMujerMayorTemperatura+ " con "+mujerMayorTemperatura;
 			}		
+
+			console.log (mensajeA+mensajeB+mensajeC);
 
 }

@@ -54,7 +54,7 @@ c)la marca del más liviano de los sólidos
                         }
                 }
                
-                else if(tipo=="solido"){
+                else {
                         if(flagSolido == 0 || peso<pesoSolido){
                                 marcaSolidoLiviano = marca;
                                 pesoSolido = peso;
@@ -69,13 +69,13 @@ c)la marca del más liviano de los sólidos
         console.log("a -El peso total de la compra es de "+acumuladorPeso+" kg");
        
      
-        if (tipo == "liquido") {
-           console.log("b-La marca del liquido mas caro es "+marcaLiquidoCaro+" con un precio de $"+precioLiquidoCaro);
+        if (flagLiquido == 0) {
+                console.log("No se ingresaron liquidos");
         }else{
-            console.log("No se ingresaron liquidos")
+                console.log("b-La marca del liquido mas caro es "+marcaLiquidoCaro+" con un precio de $"+precioLiquidoCaro);
         }
         
-        if(!(tipo == "solido")){
+        if(flagSolido == 0){
               console.log("c-No se ingresaron productos solidos");
         }else{
               console.log("c-La marca del solido mas liviano es "+marcaSolidoLiviano+" con peso de "+pesoSolido+" kg");

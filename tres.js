@@ -26,12 +26,12 @@ let acumuladorSalta = 0;
 
 let lugarMasElegido;
 let nombreDelTitularConMasPasajeros;
-let MaxPersonas;
+let maxPersonas;
 let flagTitular = 0;
 
-let promedioEnInvierno = 0;
-let AcumuladorDeinvierno = 0;
-let ContadorEnInvierno = 0;
+let promedioEnInvierno ;
+let acumuladorInvierno = 0;
+let contadorInvierno = 0;
 
 				
 		do{
@@ -67,15 +67,16 @@ let ContadorEnInvierno = 0;
 		}
 				// EL NOMBRE DE LA PERSONA QUE LLEVE MAS PASAJEROS.
 
-		if (flagTitular == 0 || MaxPersonas<cantidadDePersonas){
+		if (flagTitular == 0 || maxPersonas<cantidadDePersonas){
 			nombreDelTitularConMasPasajeros = nombre;
-			MaxPersonas = cantidadDePersonas;
+			maxPersonas = cantidadDePersonas;
+			flagTitular = 1;
 		}					
 			//CONTADOR Y ACUMULADOR DE PERSONAS QUE VIAJAN EN INVIERNO;
 
 		if(temporada == "invierno"){
-				AcumuladorDeinvierno += cantidadDePersonas;
-				ContadorEnInvierno++;
+				acumuladorInvierno += cantidadDePersonas;
+				contadorInvierno++;
 		}
 
 
@@ -86,7 +87,7 @@ let ContadorEnInvierno = 0;
 		}while(seguir =="si" );	
 				//PROMEDIO DE PERSONAS QUE VIAJAN EN INVIERNO
 				
-			promedioEnInvierno = AcumuladorDeinvierno / ContadorEnInvierno;
+			promedioEnInvierno = acumuladorInvierno / contadorInvierno;
 			
 				//COMPARACION DE LUGAR MAS ELEGIDO;
 
@@ -101,9 +102,11 @@ let ContadorEnInvierno = 0;
 
 						console.log ("a-El lugar mas elegido es "+ lugarMasElegido );
 						console.log ("b-El nombre del titular con mas pasajero es  "+nombreDelTitularConMasPasajeros+"  ");
-						if(!(temporada == "invierno")){
+						if(temporada != "invierno"){
 							console.log ("c- Nadie viajo en temporada de invierno");
-						}else{
-						console.log ("c-Promedio de las personas que viajan en invierno es de : "+  promedioEnInvierno  );
+						}else if(temporada == "invierno" && acumuladorInvierno == 0) {
+										console.log("c- Se viajo en invierno, pero no se ingresaron pasajeros");
+						}else {
+							console.log ("c-Promedio de las personas que viajan en invierno es de : "+  promedioEnInvierno  );
 						}
 		}
